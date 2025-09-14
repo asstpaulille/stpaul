@@ -1,0 +1,9 @@
+import { NewsItem, CalendarEvent } from '../types';
+
+export const defaultLogoBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAYFBMVEX9/f329vb6+vrz8/P9/fzw8PDp6en4+Pjx8fHt7e3u7u7k5OTe3t7a2trs7OzY2Nji4uLq6urQ0NC5ubnMzMybm5uVlZWgoKCPj49/f39ycnJsbGxISEhFRUVBQUFOTk7Nl30eAAADsklEQVR4nO3d7XqiMBQGYCiCEAUFRVxb3Vb//x+uW1a3tT0zDyzMmTf3C8+AMwckk10IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgS0xK9uNFd6sZ52/39S5uM2e2t+5e933N2C1mscvNlq3/1P5mU82c2X6/q/dhJ5vN1r3M2B3bSLaPj/t1bN3M2M1mZ/X3t+mY2Vbrs5g5s/069/t9N+1d7M3M5a68+v6+7o2dZG42N6u/z22zfb3b3Fz1/T7fTfvIxm4z+7p6fX+7t8fOZvNue7u+z2/zKGs3m5nZ3+e22d993SxmPq+Vp2f/P7/fM1qjN5uZ+V1+G/v8Pq/JzG7z+b6e3+8dZzGbzZbq6/j7fW89g5nLzcbq6+D39/t9fT2fS4b8qLz9/X7fTfve5ub5fP117vt9zX2M3Ww2W6vft7f5ffs29/18X89v8zmbmdnfp1/39/u+t7md5ub19/t9jZ3fT/f1/H5/X29n5nKZDPnZ6vt939vZ2c3mePX1e/f7fTfvJzOzafV1/P2+7s7mMlcy5MvV1/n3+z33/Xw9v89vc3/fz/f1/P7+vp7N/l4n+L6e3+e3ub+vz/f1+X3t/T4/s/u6fr+v7+vZ/T3b+P2+9n6/p7fz83o+v8/v6/289v6eP1+f1/f1/J7t6/n9vva+ns9v83vN7+f1/b7n923u52O+/n6/p+fn4/j9vva+vp7f5/e15/t1/X5fe77f1/f1fF/P5/f5/f2+7s/v5+X6+n29z3+/p+f3tff1/L6ev7e/3+fnY7X1/X6/z+fnY7X1+3p+P1/f1+f7eh7/l83u6vv9fj/P7/f1/X5fy+/n5fr6fb3P7/f1/P5+vs7P6+dzuX5fT/fz8/p8Pb9ft7/f1+/r+X29r+ev7+/z83G9vb9f5+fzcb29v6/n5+t5/f6e38+32/f3e/w+P6/P7+vd/v1+v8/P6/X2/X5fn9/X+3p+X6+37+9z/T4/r9fb9/d5/T6vr/fz/Xy/fX+f0+/r+3o+n8/X5ff19v09n6/X7+/z+7x+P1+f1+/v8/o8n8/n6/b3ef0+r6/X6/f3efw+v6/X++v7ezyfz+fzdfv7PF+v1+f3ef0+n+/X7e/z+3o+n6/b3+fw+/x+vb+/z+f7dft7PN+v1+/v83y9Xq/f3+fx+/y+Xq/f3+fz+Xq9vr/P7/f1er1+v7/P6/f5er3ev7/P5/f1er1ev7/f4/f7+nq9Xr+/z+/39Xq9Xq/f7/f4/X5fr9fr9/v8fr+v1+v1+v0+n9/n9Xq9fr/P6/f5er3ev8/v9/V6vV6v3+/z+n0+n6/X6/f7fD7f7/f1er3ev88DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABg//YPaQGvB5D5X/cAAAAASUVORK5CYII=';
+
+// Data is now primarily loaded from /public/data/*.json
+// These serve as a fallback or initial state before the fetch completes.
+export const initialNews: NewsItem[] = [];
+
+export const initialEvents: CalendarEvent[] = [];

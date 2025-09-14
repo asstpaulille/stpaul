@@ -1,0 +1,15 @@
+
+[
+  {
+    "id": "news-1",
+    "title": "Ouverture des inscriptions 2024-2025",
+    "content": "Les inscriptions pour la nouvelle saison sont officiellement ouvertes ! Réservez votre place dès maintenant via le formulaire en ligne.",
+    "date": "2024-08-15T10:00:00Z"
+  },
+  {
+    "id": "news-2",
+    "title": "Nouveau créneau pour la section Boxe",
+    "content": "Bonne nouvelle pour nos boxeurs ! Un nouveau créneau d'entraînement est disponible le jeudi de 19h à 20h30.",
+    "date": "2024-08-10T14:30:00Z"
+  }
+]

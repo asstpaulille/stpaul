@@ -1,0 +1,20 @@
+{
+  "short_name": "AS St-Paul",
+  "name": "A.S. Saint-Paul Lille",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0D47A1",
+  "background_color": "#E3F2FD"
+}

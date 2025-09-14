@@ -1,0 +1,21 @@
+
+[
+  {
+    "id": "event-1",
+    "title": "Tournoi de Rugby à Sept",
+    "date": "2024-09-21",
+    "description": "Tournoi amical inter-clubs au stade municipal."
+  },
+  {
+    "id": "event-2",
+    "title": "Compétition de Natation",
+    "date": "2024-10-05",
+    "description": "Compétition départementale à la piscine de Lille."
+  },
+  {
+    "id": "event-3",
+    "title": "Stage de Tennis de la Toussaint",
+    "date": "2024-10-28",
+    "description": "Stage d'une semaine pour les jeunes de 8 à 16 ans."
+  }
+]
