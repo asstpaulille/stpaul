@@ -24,28 +24,29 @@ function App() {
   const [news, setNews] = useLocalStorage<NewsItem[]>('sspl_news', initialNews);
   const [events, setEvents] = useLocalStorage<CalendarEvent[]>('sspl_events', initialEvents);
 
-  // On first load for a new user, populate localStorage from the canonical JSON data files.
-   useEffect(() => {
-    const initializeData = async () => {
+  // Fetch latest data on app load. useLocalStorage provides the initial value from localStorage,
+  // and this effect updates it with fresh data from the network (via the service worker).
+  // This ensures the app is up-to-date when online, while still working offline.
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        if (localStorage.getItem('sspl_members') === null) {
-          const res = await fetch('/data/members.json');
-          if (res.ok) setMembers(await res.json());
-        }
-        if (localStorage.getItem('sspl_news') === null) {
-          const res = await fetch('/data/news.json');
-          if (res.ok) setNews(await res.json());
-        }
-        if (localStorage.getItem('sspl_events') === null) {
-          const res = await fetch('/data/events.json');
-          if (res.ok) setEvents(await res.json());
-        }
+        const [membersRes, newsRes, eventsRes] = await Promise.all([
+          fetch('/data/members.json'),
+          fetch('/data/news.json'),
+          fetch('/data/events.json'),
+        ]);
+
+        if (membersRes.ok) setMembers(await membersRes.json());
+        if (newsRes.ok) setNews(await newsRes.json());
+        if (eventsRes.ok) setEvents(await eventsRes.json());
       } catch (error) {
-        console.error("Failed to initialize data from JSON files:", error);
+        console.error("Failed to fetch latest data:", error);
+        // On error (e.g., offline), the app will gracefully continue using the data
+        // already loaded from localStorage by the useLocalStorage hook.
       }
     };
-    initializeData();
-  }, [setMembers, setNews, setEvents]);
+    fetchData();
+  }, []); // Empty dependency array ensures this runs only once on mount.
 
 
   const handleAddMember = (newMemberData: Omit<Member, 'id' | 'registrationDate'>) => {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'as-saint-paul-lille-v1';
+const CACHE_NAME = 'as-saint-paul-lille-v2';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
@@ -17,6 +17,31 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+
+  // Network-first strategy for data files
+  if (requestUrl.pathname.startsWith('/data/')) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(cache => {
+        return fetch(event.request)
+          .then(networkResponse => {
+            // Got a response from the network.
+            // Update the cache with the new response.
+            cache.put(event.request, networkResponse.clone());
+            // And return the network response.
+            return networkResponse;
+          })
+          .catch(() => {
+            // Network request failed, probably offline.
+            // Try to serve from cache.
+            return cache.match(event.request);
+          });
+      })
+    );
+    return;
+  }
+
+  // Cache-first strategy for everything else
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -25,20 +50,17 @@ self.addEventListener('fetch', event => {
           return response;
         }
 
-        // Clone the request because it's a stream and can only be consumed once.
+        // Not in cache, go to network.
         const fetchRequest = event.request.clone();
 
         return fetch(fetchRequest).then(
           response => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              if (event.request.url.startsWith('https://aistudiocdn.com')) {
-                 return fetch(event.request);
-              }
+            // Check if we received a valid response to cache.
+            // Opaque responses (from no-cors requests like CDNs) can't have their status checked, but are fine to cache.
+            if (!response || (response.status !== 200 && response.type !== 'opaque') || response.type === 'error') {
               return response;
             }
             
-            // Clone the response because it's a stream and can only be consumed once.
             const responseToCache = response.clone();
 
             caches.open(CACHE_NAME)
